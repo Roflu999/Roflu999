@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChemTutor Pro 🧪</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="emoji">🧪</span>
+        <h1>ChemTutor Pro</h1>
+      </div>
+      <div class="subtitle">AI-Powered Chemistry Assistant</div>
+      
+      <!-- Connection Settings -->
+      <div class="connection-panel">
+        <div class="connection-status" id="connectionStatus">
+          ⚠️ <span>Backend not configured</span>
+        </div>
+        <div class="url-input-group">
+          <label for="apiUrl">Backend URL:</label>
+          <input 
+            type="text" 
+            id="apiUrl" 
+            placeholder="https://your-username-chem-tutor.hf.space"
+            value=""
+          >
+          <button class="test-btn" onclick="testConnection()">Test</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Setup Panel (shown when not configured) -->
+    <div class="setup-panel" id="setupPanel" style="display: none;">
+      <div class="setup-content">
+        <h3>🔧 Setup Required</h3>
+        <p>This frontend needs a backend to connect to the AI. Here's how:</p>
+        <ol>
+          <li>Deploy the backend to <strong>Hugging Face Spaces</strong> (Docker option)</li>
+          <li>Get your Space URL: <code>https://your-username-chem-tutor.hf.space</code></li>
+          <li>Paste it in the "Backend URL" field above</li>
+          <li>Click "Test" to verify connection</li>
+        </ol>
+        <p class="setup-note">
+          💡 The backend handles the Moonshot API securely so your API key stays private.
+        </p>
+      </div>
+    </div>
+
+    <!-- Chat Container -->
+    <main class="chat-container" id="chatContainer">
+      <div class="welcome-message">
+        <h2>👋 Welcome to ChemTutor Pro!</h2>
+        <p>I'm your AI chemistry tutor. Ask me anything about:</p>
+        <div class="quick-topics">
+          <button class="topic-btn" data-topic="What is the SN2 reaction mechanism?">SN2 Mechanism</button>
+          <button class="topic-btn" data-topic="Calculate the molar mass of H2SO4">Molar Mass</button>
+          <button class="topic-btn" data-topic="Explain periodic trends in electronegativity">Periodic Trends</button>
+          <button class="topic-btn" data-topic="What is Le Chatelier's principle?">Le Chatelier</button>
+        </div>
+        <p class="hint">💡 Try: "What happens in an SN1 reaction?" or "Calculate pH of 0.1M HCl"</p>
+      </div>
+    </main>
+
+    <!-- Input Area -->
+    <footer class="input-area">
+      <div class="input-wrapper">
+        <textarea 
+          id="messageInput" 
+          placeholder="Ask a chemistry question..."
+          rows="1"
+        ></textarea>
+        <button id="sendBtn" class="send-btn">
+          <span>➤</span>
+        </button>
+      </div>
+      <div class="disclaimer">
+        Powered by Moonshot AI • Verify important calculations
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
